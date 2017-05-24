@@ -13,6 +13,7 @@
         android:padding="@dimen/padding">
 
         <ImageView
+            android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@mipmap/ic_back" />
@@ -40,6 +41,7 @@
             android:layout_weight="1">
 
             <ImageView
+                android:layout_margin="10dp"
                 android:id="@+id/imvHumen"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/icon"
@@ -47,6 +49,7 @@
                 android:src="@mipmap/ic_user" />
 
             <ImageView
+                android:id="@+id/imvCamera"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/imvHumen"
@@ -73,6 +76,7 @@
                     android:src="@mipmap/ic_name" />
 
                 <EditText
+                    android:id="@+id/edtName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/name"
@@ -93,6 +97,7 @@
                     android:src="@mipmap/ic_user" />
 
                 <EditText
+                    android:id="@+id/edtUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/user"
@@ -114,6 +119,7 @@
                     android:src="@mipmap/ic_password" />
 
                 <EditText
+                    android:id="@+id/edtPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
