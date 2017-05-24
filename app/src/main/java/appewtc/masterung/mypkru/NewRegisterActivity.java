@@ -1,6 +1,9 @@
 package appewtc.masterung.mypkru;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -15,6 +18,7 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
     private EditText nameEditText, userEditText, passwordEditText;
     private ImageView backImageView, humanImageView, cameraImageView;
     private Button button;
+    private Uri humanUri, camaraUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,23 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
         //For Human
         if ((requestCode == 0) && (resultCode == RESULT_OK)) {
             Log.d("24MayV1", "Human OK");
+
+            //Show Image
+            humanUri = data.getData();
+            try {
+
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(humanUri));
+                    humanImageView.setImageBitmap(bitmap);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } catch (Exception e) {
+                Log.d("24MayV1", "e humanUri ==> " + e.toString());
+            }
+
+
         }
 
     }
