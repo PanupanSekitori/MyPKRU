@@ -67,6 +67,7 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
             Log.d("24MayV1", "Camera Result OK");
 
 
+
         }   // if Camera
 
 
