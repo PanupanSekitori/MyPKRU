@@ -1,31 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="appewtc.masterung.mypkru.NewRegisterActivity">
 
     <RelativeLayout
-        android:background="@color/colorPrimary"
-        android:padding="@dimen/padding"
+        android:id="@+id/relTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="@dimen/padding">
 
         <ImageView
-            android:src="@mipmap/ic_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_back" />
 
         <TextView
-            android:textColor="@color/textColorPrimary"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/h1"
-            android:text="@string/new_register"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/new_register"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/h1" />
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnRegister"
+        android:layout_below="@+id/relTop"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"></LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/new_register"
+        android:textColor="@color/textColorPrimary" />
 
 
 </RelativeLayout>
