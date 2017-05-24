@@ -90,12 +90,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_name" />
+                    android:src="@mipmap/ic_user" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/name"
+                    android:hint="@string/user"
                     android:inputType="text"
                     android:textColor="@color/colorPrimaryDark"
                     android:textColorHint="@color/colorPrimary" />
@@ -110,12 +110,12 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_name" />
+                    android:src="@mipmap/ic_password" />
 
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/name"
+                    android:hint="@string/password"
                     android:inputType="text"
                     android:textColor="@color/colorPrimaryDark"
                     android:textColorHint="@color/colorPrimary" />
