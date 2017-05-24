@@ -1,7 +1,9 @@
 package appewtc.masterung.mypkru;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,6 +28,17 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
         controller();
 
     }   // Main Method
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        //For Human
+        if ((requestCode == 0) && (resultCode == RESULT_OK)) {
+            Log.d("24MayV1", "Human OK");
+        }
+
+    }
 
     private void controller() {
         backImageView.setOnClickListener(this);
@@ -52,6 +65,13 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
         //For Back
         if (view == backImageView) {
             finish();
+        }
+
+        //For Human
+        if (view == humanImageView) {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+            startActivityForResult(Intent.createChooser(intent, "Please Choose App for Choose Image"), 0);
         }
 
     }
