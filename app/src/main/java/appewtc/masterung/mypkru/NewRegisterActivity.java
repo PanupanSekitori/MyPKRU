@@ -79,6 +79,8 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
                         .openInputStream(camaraUri));
                 humanImageView.setImageBitmap(bitmap);
 
+                findPathAnName(camaraUri);
+
             } catch (Exception e) {
                 Log.d("24MayV1", "e camera ==> " + e.toString());
             }
