@@ -107,6 +107,9 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
         }
         Log.d("24MayV1", "Path ==> " + pathImageString);
 
+        nameImageString = pathImageString.substring(pathImageString.lastIndexOf("/"));
+        Log.d("24MayV1", "Name ==> " + nameImageString);
+
     }
 
     private void controller() {
