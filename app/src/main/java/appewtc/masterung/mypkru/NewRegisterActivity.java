@@ -216,6 +216,16 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
 
             //Update mySQl
             String urlPHP = "http://swiftcodingthai.com/pkru/addUserMaster.php";
+            nameImageString = "http://swiftcodingthai.com/pkru/ImageMaster" + nameImageString;
+            PostNewUser postNewUser = new PostNewUser(this);
+            postNewUser.execute(nameUserString, userString, passwordString,
+                    nameImageString, urlPHP);
+
+            if (Boolean.parseBoolean(postNewUser.get())) {
+                finish();
+            } else {
+                Toast.makeText(NewRegisterActivity.this, "Error Update", Toast.LENGTH_SHORT).show();
+            }
 
 
         } catch (Exception e) {
