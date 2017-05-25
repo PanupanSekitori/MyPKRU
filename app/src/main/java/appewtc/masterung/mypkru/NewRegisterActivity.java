@@ -214,6 +214,10 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
             Toast.makeText(NewRegisterActivity.this, "Upload Image Success",
                     Toast.LENGTH_SHORT).show();
 
+            //Update mySQl
+            String urlPHP = "http://swiftcodingthai.com/pkru/addUserMaster.php";
+
+
         } catch (Exception e) {
             Log.d("24MayV1", "e upload ==> " + e.toString());
         }
