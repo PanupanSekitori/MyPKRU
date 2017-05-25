@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     //Explicit
@@ -16,6 +19,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView textView;
     private Button button;
     private String userString, passwordString;
+    private String[] loginStrings;
+    private String[] columnStrings = new String[]{"id", "Name", "User", "Password", "Image"};
+    private boolean aBoolean = true;
 
 
     @Override
@@ -86,6 +92,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             String strJSON = getAllData.get();
             Log.d("25MayV1", "JSON ==> " + strJSON);
+
+            JSONArray jsonArray = new JSONArray(strJSON);
+            loginStrings = new String[columnStrings.length];
+
+            for (int i=0;i<jsonArray.length();i++) {
+
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                if (userString.equals(jsonObject.getString(columnStrings[2]))) {
+                    aBoolean = false;
+
+                    for (int i1=0;i1<columnStrings.length;i1++) {
+                        loginStrings[i1] = jsonObject.getString(columnStrings[i1]);
+                        Log.d("25MayV2", "loginString(" + i1 + ") ==> " + loginStrings[i1]);
+                    }   // for2
+
+                }   // if
+
+            }   // for1
+
 
         } catch (Exception e) {
             Log.d("25MayV1", "e checkUser ==> " + e.toString());
