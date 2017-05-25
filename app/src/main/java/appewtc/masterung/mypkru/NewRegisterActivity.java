@@ -21,7 +21,9 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
     private ImageView backImageView, humanImageView, cameraImageView;
     private Button button;
     private Uri humanUri, camaraUri;
-    private String pathImageString, nameImageString;
+    private String pathImageString, nameImageString,
+            nameUserString, userString, passwordString;
+    private boolean aBoolean = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
         //For Human
         if ((requestCode == 0) && (resultCode == RESULT_OK)) {
             Log.d("24MayV1", "Human OK");
+            aBoolean = false;
 
             //Show Image
             humanUri = data.getData();
@@ -70,6 +73,7 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
         if ((requestCode == 1) && (resultCode == RESULT_OK)) {
 
             Log.d("24MayV1", "Camera Result OK");
+            aBoolean = false;
 
             //Show Image
             camaraUri = data.getData();
@@ -150,6 +154,34 @@ public class NewRegisterActivity extends AppCompatActivity implements View.OnCli
         if (view == cameraImageView) {
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(intent, 1);
+        }
+
+        //For Register
+        if (view == button) {
+
+            //Get Value From Edit Text
+            nameUserString = nameEditText.getText().toString().trim();
+            userString = userEditText.getText().toString().trim();
+            passwordString = passwordEditText.getText().toString().trim();
+
+            //Check Space
+            if (nameUserString.equals("") || userString.equals("") || passwordString.equals("")) {
+                //Have Space
+                MyAlert myAlert = new MyAlert(this);
+                myAlert.myDialog(getResources().getString(R.string.titleHaveSpace),
+                        getResources().getString(R.string.messageHaveSpace));
+            } else if (aBoolean) {
+                //No Image
+                MyAlert myAlert = new MyAlert(this);
+                myAlert.myDialog(getResources().getString(R.string.titleNoImage),
+                        getResources().getString(R.string.messageNoImage));
+
+            } else {
+                //Upload Value to Server
+
+            }
+
+
         }
 
     }
