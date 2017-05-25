@@ -3,6 +3,7 @@ package appewtc.masterung.mypkru;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -77,6 +78,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void checkUserAnPass() {
 
         String urlPHP = "http://swiftcodingthai.com/pkru/GetUserMaster.php";
+
+        try {
+
+            GetAllData getAllData = new GetAllData(this);
+            getAllData.execute(urlPHP);
+
+            String strJSON = getAllData.get();
+            Log.d("25MayV1", "JSON ==> " + strJSON);
+
+        } catch (Exception e) {
+            Log.d("25MayV1", "e checkUser ==> " + e.toString());
+        }
+
+
 
     }
 }   // Main Class นี่คือ คลาสหลัก
