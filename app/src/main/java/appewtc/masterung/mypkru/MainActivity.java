@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -110,6 +111,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }   // if
 
             }   // for1
+
+            //Check User And Password
+            if (aBoolean) {
+                //User False
+                MyAlert myAlert = new MyAlert(this);
+                myAlert.myDialog(getResources().getString(R.string.titleUserFalse),
+                        getResources().getString(R.string.messageUserFalse));
+            } else if (passwordString.equals(loginStrings[3])) {
+                // Password True
+                Toast.makeText(MainActivity.this,
+                        "Welcome " + loginStrings[1], Toast.LENGTH_SHORT).show();
+            } else {
+                // Password False
+                MyAlert myAlert = new MyAlert(this);
+                myAlert.myDialog(getResources().getString(R.string.titlePassword),
+                        getResources().getString(R.string.messagePassword));
+            }
 
 
         } catch (Exception e) {
