@@ -164,8 +164,8 @@ public class ServiceActivity extends AppCompatActivity {
             Log.d("26MayV1", "JSON ==> " + strJSON);
 
             JSONArray jsonArray = new JSONArray(strJSON);
-            String[] nameStrings = new String[jsonArray.length()];
-            String[] imageStrings = new String[jsonArray.length()];
+            final String[] nameStrings = new String[jsonArray.length()];
+            final String[] imageStrings = new String[jsonArray.length()];
             final String[] latStrings = new String[jsonArray.length()];
             final String[] lngStrings = new String[jsonArray.length()];
 
@@ -191,6 +191,8 @@ public class ServiceActivity extends AppCompatActivity {
                     intent.putExtra("Login", loginStrings);
                     intent.putExtra("Lat", latStrings[i]);
                     intent.putExtra("Lng", lngStrings[i]);
+                    intent.putExtra("Name", nameStrings[i]);
+                    intent.putExtra("Image", imageStrings[i]);
                     startActivity(intent);
 
 
