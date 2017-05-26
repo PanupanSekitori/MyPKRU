@@ -1,7 +1,8 @@
 package appewtc.masterung.mypkru;
 
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
 public class DetailActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -26,18 +28,44 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
         setContentView(R.layout.my_detail_layout);
 
         //Initial View
-
-
+        initialView();
 
         //Get Intent
         myGetIntent();
 
+        //Show View
+        showView();
+
+        //Controller
+        controller();
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         aboutFragment();
 
     }   // Main Method
+
+    private void controller() {
+        backImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    private void showView() {
+        nameHumanTextView.setText(nameString);
+        nameLoginTextView.setText(loginStrings[1]);
+        Picasso.with(this).load(imageString).into(humanImageView);
+    }
+
+    private void initialView() {
+        backImageView = (ImageView) findViewById(R.id.btnBack);
+        humanImageView = (ImageView) findViewById(R.id.imvHumen);
+        nameHumanTextView = (TextView) findViewById(R.id.txtNameFriend);
+        nameLoginTextView = (TextView) findViewById(R.id.txtNameLogin);
+    }
 
     private void myGetIntent() {
         loginStrings = getIntent().getStringArrayExtra("Login");
@@ -57,10 +85,12 @@ public class DetailActivity extends FragmentActivity implements OnMapReadyCallba
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng latLng = new LatLng(Double.parseDouble(latString), Double.parseDouble(lngString));
+
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16));
+        mMap.addMarker(new MarkerOptions().position(latLng));
+
+
     }   // onMapReady
 
 }   // Main Class
