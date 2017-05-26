@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 /**
  * Created by masterUNG on 5/26/2017 AD.
  */
@@ -52,9 +54,8 @@ public class FriendAdapter extends BaseAdapter{
 
         //Show View
         textView.setText(nameStrings[i]);
+        Picasso.with(context).load(imageStrings[i]).into(imageView);
 
-
-
-        return null;
+        return view1;
     }
 }   // Main Class
