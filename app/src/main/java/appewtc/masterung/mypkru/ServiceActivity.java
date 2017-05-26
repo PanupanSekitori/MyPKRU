@@ -1,6 +1,7 @@
 package appewtc.masterung.mypkru;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
@@ -10,6 +11,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -163,18 +166,39 @@ public class ServiceActivity extends AppCompatActivity {
             JSONArray jsonArray = new JSONArray(strJSON);
             String[] nameStrings = new String[jsonArray.length()];
             String[] imageStrings = new String[jsonArray.length()];
+            final String[] latStrings = new String[jsonArray.length()];
+            final String[] lngStrings = new String[jsonArray.length()];
 
             for (int i=0;i<jsonArray.length();i++) {
 
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 nameStrings[i] = jsonObject.getString("Name");
                 imageStrings[i] = jsonObject.getString("Image");
+                latStrings[i] = jsonObject.getString("Lat");
+                lngStrings[i] = jsonObject.getString("Lng");
                 Log.d("26MayV1", "Result (" + i + ") ==> " + nameStrings[i] + " : " + imageStrings[i]);
 
             }   // for
 
             FriendAdapter friendAdapter = new FriendAdapter(this, nameStrings, imageStrings);
             listView.setAdapter(friendAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    Intent intent = new Intent(ServiceActivity.this, DetailActivity.class);
+                    intent.putExtra("Login", loginStrings);
+                    intent.putExtra("Lat", latStrings[i]);
+                    intent.putExtra("Lng", lngStrings[i]);
+                    startActivity(intent);
+
+
+                }
+            });
+
+
+
 
         } catch (Exception e) {
             Log.d("26MayV1", "e createListView ==> " + e.toString());
