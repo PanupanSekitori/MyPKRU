@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -24,6 +25,7 @@ public class ServiceActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private Criteria criteria;
     private double latADouble = 7.909936, lngADouble = 98.388240;
+    private String urlString = "http://swiftcodingthai.com/pkru/editLatLngMaster.php";
 
 
     @Override
@@ -61,6 +63,23 @@ public class ServiceActivity extends AppCompatActivity {
 
         Log.d("26MayV2", "Lat ==> " + latADouble);
         Log.d("26MayV2", "Lng ==> " + lngADouble);
+
+        try {
+
+            EditLatLng editLatLng = new EditLatLng(this);
+            editLatLng.execute(loginStrings[0],
+                    Double.toString(latADouble),
+                    Double.toString(lngADouble),
+                    urlString);
+            if (Boolean.parseBoolean(editLatLng.get())) {
+                Toast.makeText(ServiceActivity.this, "Update Location Finish",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+
+        } catch (Exception e) {
+            Log.d("26MayV2", "e resume ==> " + e.toString());
+        }
 
 
     }
